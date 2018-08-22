@@ -1,6 +1,6 @@
 try{
-const wes=require("ws");
-const wss=new wes.Server({port:19133});
+var wes=require("ws");
+var wss=new wes.Server({port:19133});
 }catch(errst){
 console.log("Error when loading ws: %s.",errst.message);l
 process.exit(1);
