@@ -48,6 +48,7 @@ function gamecmds(cmd) {
        var wsc=new wes(con);
        wsc.on("open",function(){clients.push(wsc);gamecmds("say Connected to websocket: "+con);});
        wsc.on("message",function(msgg){ws.send(msgg);});
+	       wsc.on("error",function(err){throw err;});
        }catch(erro){
         gamecmds("say Failed to connect to websocket: "+erro.message);
         return;
