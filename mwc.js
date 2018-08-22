@@ -39,11 +39,11 @@ function gamecmds(cmd) {
 		}));
 	}
   ws.on("message",function (msg){
-  if (JSON.parse(message).body.eventName == "PlayerMessage"
+  if (JSON.parse(msg).body.eventName == "PlayerMessage"
 		/* && JSON.parse(message).body.properties.MessageType=="chat"*/
-		&& JSON.parse(message).header.requestId != "00000000-0001-0000-000000000000") {
-			if (JSON.parse(message).body.properties.Message.substring(0,10) == "*/connect ") {
-       var con=JSON.parse(message).body.properties.Message.split(" ")[1];
+		&& JSON.parse(msg).header.requestId != "00000000-0001-0000-000000000000") {
+			if (JSON.parse(msg).body.properties.Message.substring(0,10) == "*/connect ") {
+       var con=JSON.parse(msg).body.properties.Message.split(" ")[1];
        try{
        var wsc=new wes(con);
        wsc.on("open",function(){clients.push(wsc);gamecmds("say Connected to websocket: "+con);});
