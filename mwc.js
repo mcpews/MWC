@@ -38,6 +38,9 @@ function gamecmds(cmd) {
 			}
 		}));
 	}
+	
+	gamecmds("say MWC Connected!");
+	
   ws.on("message",function (msg){
   if (JSON.parse(msg).body.eventName == "PlayerMessage"
 		/* && JSON.parse(message).body.properties.MessageType=="chat"*/
