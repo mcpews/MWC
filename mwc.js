@@ -44,6 +44,9 @@ function gamecmds(cmd) {
 		&& JSON.parse(msg).header.requestId != "00000000-0001-0000-000000000000") {
 			if (JSON.parse(msg).body.properties.Message.substring(0,10) == "*/connect ") {
        var con=JSON.parse(msg).body.properties.Message.split(" ")[1];
+				if(con.substring(0,5)!="ws://"){
+					con="ws://"+con;
+				}
        //try{
        var wsc=new wes(con);
        wsc.on("open",function(){clients.push(wsc);gamecmds("say Connected to websocket: "+con);});
