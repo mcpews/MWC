@@ -8,7 +8,7 @@ process.exit(1);
 
 var clients=[];
 
-ws.on("connection",function (ws){
+wss.on("connection",function (ws){
 ws.send(JSON.stringify({
 		"body": {
 			"eventName": "PlayerMessage"
