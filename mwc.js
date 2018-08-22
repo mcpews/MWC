@@ -53,7 +53,7 @@ function gamecmds(cmd) {
         return;
       }
       return;
-}
+}}
 clients.forEach(function(wscc,i){
 wscc.send(msg);
 });
