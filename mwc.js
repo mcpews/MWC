@@ -2,7 +2,7 @@ try{
 var wes=require("ws");
 var wss=new wes.Server({port:19133});
 }catch(errst){
-console.log("Error when loading ws: %s.",errst.message);l
+console.log("Error when loading ws: %s.",errst.message);
 process.exit(1);
 }
 
@@ -44,15 +44,15 @@ function gamecmds(cmd) {
 		&& JSON.parse(msg).header.requestId != "00000000-0001-0000-000000000000") {
 			if (JSON.parse(msg).body.properties.Message.substring(0,10) == "*/connect ") {
        var con=JSON.parse(msg).body.properties.Message.split(" ")[1];
-       try{
+       //try{
        var wsc=new wes(con);
        wsc.on("open",function(){clients.push(wsc);gamecmds("say Connected to websocket: "+con);});
        wsc.on("message",function(msgg){ws.send(msgg);});
-	       wsc.on("error",function(err){throw err;});
-       }catch(erro){
+	       wsc.on("error",function(err){gamecmds("say Failed to connect to websocket: "+err.message);});
+       /*}catch(erro){
         gamecmds("say Failed to connect to websocket: "+erro.message);
         return;
-      }
+      }*/
       return;
 }}
 clients.forEach(function(wscc,i){
