@@ -78,7 +78,7 @@ function gamecmds(cmd) {
 		&& JSON.parse(msg).header.requestId != "00000000-0001-0000-000000000000") {
 	  var spl=JSON.parse(msg).body.properties.Message.split(" ");
 	  if(JSON.parse(msg).body.properties.Message.split(" ")[0]=="*/dc"||spl[0]=="*/disconnect"){
-		  try{findid(spl[1]).ws.terminate();gamecmds("say Done");}catch(undefined){gamecmds("say Unable to disconnected.\nMaybe: Server is disconnected.");}return;
+		  try{findid(spl[1]).ws.terminate();gamecmds("say Done");}catch(undefined){gamecmds("say Unable to disconnect.\nMaybe: Server is disconnected.");}return;
 	  }
 	  if(spl[0]=="*/dcm"){
 		  try{ws.terminate()}catch(undefined){}
